@@ -1,27 +1,5 @@
-# Water Bill Management System
-
-Integrated frontend + backend application.
-
-## Run
-
-```bash
-npm install
-npm start
-```
-
-Open:
-
-```text
-http://localhost:4000
-```
-
-Demo login:
-
-```text
-alex.d@waterbill.admin
-ChangeMe123!
-```
-
+LINK
+waterbilltharun-production.up.railway.app
 ## Pages
 
 - Dashboard: `/dashboard.html`
