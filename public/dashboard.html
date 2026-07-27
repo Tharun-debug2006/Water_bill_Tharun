@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - Water Bill Management System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#001e30",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "inverse-primary": "#9acbff",
+                    "tertiary": "#005f8c",
+                    "primary": "#005e97",
+                    "tertiary-fixed-dim": "#8dcdff",
+                    "on-tertiary-fixed-variant": "#004b70",
+                    "surface": "#f7f9fb",
+                    "surface-container": "#eceef0",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "background": "#f7f9fb",
+                    "surface-variant": "#e0e3e5",
+                    "secondary-fixed": "#d2e6ef",
+                    "secondary-fixed-dim": "#b6cad2",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-container-high": "#e6e8ea",
+                    "tertiary-container": "#0079b1",
+                    "primary-fixed-dim": "#9acbff",
+                    "on-primary-container": "#f7f9ff",
+                    "secondary-container": "#d2e6ef",
+                    "surface-tint": "#00629e",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#191c1e",
+                    "secondary": "#4f6169",
+                    "on-primary-fixed": "#001d34",
+                    "on-tertiary-container": "#f5f9ff",
+                    "error": "#ba1a1a",
+                    "primary-container": "#0077be",
+                    "on-primary-fixed-variant": "#004a79",
+                    "on-background": "#191c1e",
+                    "primary-fixed": "#cfe5ff",
+                    "inverse-surface": "#2d3133",
+                    "surface-dim": "#d8dadc",
+                    "on-secondary-fixed": "#0b1e24",
+                    "outline": "#707882",
+                    "on-secondary-fixed-variant": "#374951",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f2f4f6",
+                    "on-surface-variant": "#404751",
+                    "on-secondary-container": "#55676f",
+                    "outline-variant": "#c0c7d2",
+                    "tertiary-fixed": "#cae6ff",
+                    "surface-bright": "#f7f9fb",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "sm": "16px",
+                    "container-max": "1280px",
+                    "md": "24px",
+                    "xl": "48px",
+                    "lg": "32px",
+                    "gutter": "24px",
+                    "sidebar-width": "260px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden fixed top-0 w-full z-40 flex justify-between items-center px-gutter h-16 bg-surface border-b border-outline-variant">
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">Water Bill Management System</span>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95">account_circle</span>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width hidden md:flex flex-col p-sm gap-xs bg-surface-container-low shadow-sm z-50">
+<div class="mb-lg px-xs py-sm">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">Water Bill Management System</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Admin Portal</p>
+</div>
+<nav class="flex flex-col gap-xs flex-grow">
+<!-- Dashboard Active -->
+<a class="flex items-center gap-sm p-sm bg-secondary-container text-on-secondary-container font-semibold rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span class="font-label-md text-label-md">Buildings</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-md text-label-md">Summary</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-xl p-sm flex items-center gap-sm border-t border-outline-variant">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed">person</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Admin User</p>
+<p class="text-[10px] text-on-surface-variant">Property Manager</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-sidebar-width pt-20 md:pt-10 px-sm md:px-gutter pb-24 transition-all">
+<!-- Header Section -->
+<div class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Overview</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your property water consumption and billing.</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-sm py-2 bg-secondary-container text-on-secondary-container rounded-lg font-label-md text-label-md hover:shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Export Report
+                </button>
+</div>
+</div>
+<!-- Dashboard Grid (Bento Style Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter">
+<!-- Quick Stats Row -->
+<div class="lg:col-span-4 p-md glass-card rounded-xl shadow-sm flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Consumption</p>
+<h3 class="font-display-lg text-display-lg text-primary mt-2">4,280 <span class="text-body-md font-normal text-on-surface-variant">Ltrs</span></h3>
+<p class="text-green-600 font-label-md text-label-md mt-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+                        12% decrease from last month
+                    </p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+</div>
+<div class="lg:col-span-4 p-md glass-card rounded-xl shadow-sm flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Active Bills</p>
+<h3 class="font-display-lg text-display-lg text-tertiary mt-2">24</h3>
+<p class="text-on-surface-variant font-label-md text-label-md mt-4">2 buildings currently being managed</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+</div>
+<div class="lg:col-span-4 p-md bg-primary text-on-primary rounded-xl shadow-md flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-[48px] mb-2">add_circle</span>
+<h4 class="font-headline-sm text-headline-sm mb-1">Quick Action</h4>
+<p class="font-body-sm text-body-sm opacity-90 mb-4">Register a new meter or tenant</p>
+<button class="px-lg py-2 bg-on-primary text-primary rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors">Register Now</button>
+</div>
+<!-- Building Section - The Requested Cards -->
+<div class="lg:col-span-12 mt-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Your Properties</h3>
+</div>
+<!-- Building Card: Prabhakar Building -->
+<div class="lg:col-span-6 glass-card rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
+<div class="h-48 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A clean architectural photo of a modern white apartment building called Prabhakar Building, featuring large glass windows and blue water-themed accents, bright daylight setting, professional real estate photography style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDDgc_ZbpS4Moc7tRPovTyVYzd5AdymJ1DgsfgDhE0Ovid-5o2FyKluz2t0h1aQRen-2jvHr5wlocWj-dpygf3u_Tgj24P444Ve0Qq2Sybnsvg3xMVBvPSDhYuRUF8CiZbXEpGbhQyu4L38i1J6168S6gEmtHS8VNHn6gSvrrrep1r0CmcF4ZOKAxLVQtRL4LLx1a_vd6CNmCPM3XNnqhTy42-XwqebpjVe8x_52gj7kyLr0PY_E-c5z4M_bBEOd6wcos99SADUPPA')"></div>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-full px-sm py-1 flex items-center gap-1 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="font-label-md text-label-md text-on-surface">Active</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-sm">
+<h4 class="font-headline-lg text-headline-lg text-on-surface">Prabhakar Building</h4>
+<div class="p-2 bg-surface-container rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+</div>
+</div>
+<div class="flex items-center gap-xl mb-lg">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Units</span>
+<span class="font-headline-sm text-headline-sm text-primary">12 Houses</span>
+</div>
+<div class="flex flex-col border-l border-outline-variant pl-xl">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Usage</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">High</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex-grow py-3 bg-primary text-on-primary rounded-lg font-label-md text-label-md flex items-center justify-center gap-xs hover:bg-primary-container transition-colors active:scale-[0.98]">
+                            Open Building
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="p-3 border border-primary text-primary rounded-lg hover:bg-primary-fixed transition-colors active:scale-95" title="Add New House">
+<span class="material-symbols-outlined">add_home</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Building Card: Bhaskar Building -->
+<div class="lg:col-span-6 glass-card rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
+<div class="h-48 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A sleek blue-tinged architectural photograph of a residential complex named Bhaskar Building, with reflective glass balconies and a clear blue sky, soft morning light, corporate real estate aesthetic, high-end finishing." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEauD8ijX0oMO-E5ijm-r6vTmOIb2BfyUf09dLxvA_plbd7SFb7PaGwrvF4sFtxi4L0nJBc4Rz7qGos7kpgopQltgsa5UMhXWLwEsf4i_is-JWonE-qmYKOK1ybPrgG9yE1NCK43pFJacv89UGa-lU3vulUxQFf_nnjCrz3qMl9O-vcd9JQFNfvwFjASLJtW2fV3StN08WRa4Vnuglamn57A74GF7hJEgYxDluvU925_Oc-YmO09x4DZOCPANaIchEcxKNRTxVFv4')"></div>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-full px-sm py-1 flex items-center gap-1 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="font-label-md text-label-md text-on-surface">Active</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-sm">
+<h4 class="font-headline-lg text-headline-lg text-on-surface">Bhaskar Building</h4>
+<div class="p-2 bg-surface-container rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+</div>
+</div>
+<div class="flex items-center gap-xl mb-lg">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Units</span>
+<span class="font-headline-sm text-headline-sm text-primary">12 Houses</span>
+</div>
+<div class="flex flex-col border-l border-outline-variant pl-xl">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Usage</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Normal</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex-grow py-3 bg-primary text-on-primary rounded-lg font-label-md text-label-md flex items-center justify-center gap-xs hover:bg-primary-container transition-colors active:scale-[0.98]">
+                            Open Building
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="p-3 border border-primary text-primary rounded-lg hover:bg-primary-fixed transition-colors active:scale-95" title="Add New House">
+<span class="material-symbols-outlined">add_home</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Consumption Chart Area -->
+<div class="lg:col-span-12 glass-card rounded-xl p-md mt-md">
+<div class="flex justify-between items-center mb-md">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Annual Trends</h4>
+<select class="bg-surface border-none rounded-lg font-label-md text-label-md text-on-surface-variant">
+<option>Current Year (<span id="currentYear"></span>)</option>
+<option>Last Year (<span id="lastYear"></span>)</option>
+</select>
+</div>
+<!-- Simple representation of a chart -->
+<div class="h-64 w-full flex items-end gap-xs overflow-x-auto pb-4 px-2">
+<div class="flex-1 bg-surface-container-highest rounded-t-lg h-1/4 group relative">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-t-lg h-2/4 group relative">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-t-lg h-3/4 group relative">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="flex-1 bg-primary rounded-t-lg h-4/5 group relative">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-white px-2 py-1 rounded text-[10px] whitespace-nowrap">Highest Peak</div>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-t-lg h-1/2 group relative">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-t-lg h-2/3 group relative">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-t-lg h-2/5 group relative">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-t-lg h-3/5 group relative">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-t-lg h-1/4 group relative">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-t-lg h-1/5 group relative">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-t-lg h-2/4 group relative">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-t-lg h-1/3 group relative">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+</div>
+<div class="flex justify-between mt-2 font-label-md text-label-md text-on-surface-variant px-2">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface border-t border-outline-variant shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-2xl p-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span class="font-label-md text-[10px]">Buildings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-md text-[10px]">Summary</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-[10px]">Settings</span>
+</a>
+</nav>
+<!-- FAB for quick actions on mobile -->
+<button class="md:hidden fixed bottom-20 right-4 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center z-40 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<script>
+        // Simple micro-interaction for building cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential for more complex animations if needed
+            });
+        });
+    </script>
+<script src="/app.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+ const d=new Date();
+ const e=id=>document.getElementById(id);
+ if(e('todayDate')) e('todayDate').textContent=d.toLocaleDateString('en-GB');
+ if(e('currentMonthYear')) e('currentMonthYear').textContent=d.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+ if(e('currentYear')) e('currentYear').textContent=d.getFullYear();
+ if(e('lastYear')) e('lastYear').textContent=d.getFullYear()-1;
+});
+</script>
+
+</body></html>
+

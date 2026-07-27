@@ -1,0 +1,31 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - Water Bill Management System</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-[#f7f9fb] flex items-center justify-center p-6" style="font-family: Inter, sans-serif;">
+  <form id="login-form" class="w-full max-w-sm bg-white border border-[#c0c7d2] rounded-xl shadow-sm p-6 space-y-4">
+    <div>
+      <h1 class="text-2xl font-semibold text-[#005e97]">Water Bill Management System</h1>
+      <p class="text-sm text-[#404751] mt-1">Admin Portal</p>
+    </div>
+    <div>
+      <label class="text-xs font-semibold uppercase text-[#404751]" for="email">Email</label>
+      <input id="email" type="email" required class="mt-1 w-full rounded-lg border-[#c0c7d2]">
+    </div>
+    <div>
+      <label class="text-xs font-semibold uppercase text-[#404751]" for="password">Password</label>
+      <input id="password" type="password" required class="mt-1 w-full rounded-lg border-[#c0c7d2]">
+    </div>
+    <p id="login-error" class="hidden text-sm text-red-700"></p>
+    <button class="w-full rounded-lg bg-[#005e97] text-white py-3 font-semibold" type="submit">Login</button>
+    <p class="text-xs text-[#404751]">Demo: alex.d@waterbill.admin / ChangeMe123!</p>
+  </form>
+  <script src="/app.js"></script>
+</body>
+</html>
+

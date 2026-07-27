@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - Water Bill Management System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#001e30",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "inverse-primary": "#9acbff",
+                        "tertiary": "#005f8c",
+                        "primary": "#005e97",
+                        "tertiary-fixed-dim": "#8dcdff",
+                        "on-tertiary-fixed-variant": "#004b70",
+                        "surface": "#f7f9fb",
+                        "surface-container": "#eceef0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "background": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#d2e6ef",
+                        "secondary-fixed-dim": "#b6cad2",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary-container": "#0079b1",
+                        "primary-fixed-dim": "#9acbff",
+                        "on-primary-container": "#f7f9ff",
+                        "secondary-container": "#d2e6ef",
+                        "surface-tint": "#00629e",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1e",
+                        "secondary": "#4f6169",
+                        "on-primary-fixed": "#001d34",
+                        "on-tertiary-container": "#f5f9ff",
+                        "error": "#ba1a1a",
+                        "primary-container": "#0077be",
+                        "on-primary-fixed-variant": "#004a79",
+                        "on-background": "#191c1e",
+                        "primary-fixed": "#cfe5ff",
+                        "inverse-surface": "#2d3133",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed": "#0b1e24",
+                        "outline": "#707882",
+                        "on-secondary-fixed-variant": "#374951",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "on-surface-variant": "#404751",
+                        "on-secondary-container": "#55676f",
+                        "outline-variant": "#c0c7d2",
+                        "tertiary-fixed": "#cae6ff",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "sm": "16px",
+                        "container-max": "1280px",
+                        "md": "24px",
+                        "xl": "48px",
+                        "lg": "32px",
+                        "gutter": "24px",
+                        "sidebar-width": "260px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-40 bg-surface border-b border-outline-variant flex justify-between items-center px-gutter h-16 w-full">
+<div class="flex items-center gap-sm">
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">Water Bill Management System</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex relative">
+<input class="pl-10 pr-4 py-2 bg-surface-container rounded-full text-body-sm outline-none focus:ring-2 focus:ring-primary/20 border-none w-64" placeholder="Search buildings..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant">search</span>
+</div>
+<div class="flex gap-sm">
+<button class="material-symbols-outlined text-primary cursor-pointer active:scale-95">notifications</button>
+<button class="material-symbols-outlined text-primary cursor-pointer active:scale-95">account_circle</button>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width hidden md:flex flex-col bg-surface-container-low shadow-sm p-sm gap-xs pt-20">
+<div class="px-sm mb-lg">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container flex items-center justify-center text-on-primary-container font-bold">
+                    AD
+                </div>
+<div>
+<h2 class="font-label-md text-label-md text-primary">Admin Portal</h2>
+<p class="text-[10px] text-on-surface-variant opacity-70 uppercase tracking-widest">Water Management</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-xs flex-1">
+<a class="flex items-center gap-sm px-sm py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span>Buildings</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span>Summary</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-3 bg-secondary-container text-on-secondary-container font-semibold rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-sm pb-sm">
+<button class="flex items-center gap-sm px-sm py-3 w-full text-error hover:bg-error-container/20 rounded-lg transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined">logout</span>
+<span>Sign Out</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-sidebar-width pt-20 pb-24 md:pb-8 px-gutter">
+<div class="max-w-container-max mx-auto">
+<!-- Header Section -->
+<div class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">System Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Configure your water utility rates, buildings, and administrative profile.</p>
+</div>
+<!-- Bento Layout Settings Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Billing Settings Section -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">payments</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm">Billing Settings</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Set global consumption thresholds and rates.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Water free limit (Liters)</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md" placeholder="2000" type="number"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant opacity-40">opacity</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Rate per litre ($)</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md" placeholder="0.15" step="0.01" type="number"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant opacity-40">attach_money</span>
+</div>
+</div>
+<div class="md:col-span-2 flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Billing Cycle</label>
+<select class="w-full px-4 py-3 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md appearance-none">
+<option>Monthly</option>
+<option>Quarterly</option>
+<option>Bi-Annual</option>
+</select>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-outline-variant flex justify-end">
+<button class="bg-primary hover:bg-primary-container text-on-primary px-lg py-3 rounded-full font-label-md text-label-md flex items-center gap-xs transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                            Save Billing
+                        </button>
+</div>
+</div>
+<!-- Admin Profile Section -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm">
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-3xl">manage_accounts</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm">Admin Profile</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Update your account credentials.</p>
+</div>
+</div>
+<div class="flex flex-col gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Full Name</label>
+<input class="w-full px-4 py-3 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md" type="text" value="Alexander Draper"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Email Address</label>
+<input class="w-full px-4 py-3 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md" type="email" value="alex.d@waterbill.admin"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">New Password</label>
+<input class="w-full px-4 py-3 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" type="password"/>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-outline-variant flex justify-end">
+<button class="bg-tertiary hover:bg-tertiary-container text-on-tertiary px-lg py-3 rounded-full font-label-md text-label-md transition-all active:scale-95 shadow-sm">
+                            Update Profile
+                        </button>
+</div>
+</div>
+<!-- Building Information Section -->
+<div class="lg:col-span-12 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md mb-lg">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl">domain</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm">Building Information</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Manage buildings under your administration.</p>
+</div>
+</div>
+<button class="flex items-center justify-center gap-xs px-lg py-2.5 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md rounded-full border border-outline-variant transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                            Add Building
+                        </button>
+</div>
+<!-- Building List/Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-md">
+<!-- Building Card 1 -->
+<div class="p-md rounded-xl bg-surface border border-outline-variant flex items-start justify-between group">
+<div class="flex gap-md">
+<div class="w-14 h-14 bg-white rounded-lg border border-outline-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A modern architectural photograph of a sleek glass apartment complex in a clean urban environment. The photo is bright with natural sunlight, emphasizing the Water Blue accents of the management system. The overall mood is architectural and high-end." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLvOSj_azzMOR97lujIkidx3AjtIFXkcNGGRJiVv1oHGuwzSVvchxuqGD2kUN6gqvsObK7PB_r7nXB09R1bufRgjOicT6Hkvkpg6V_rT47SnHkaHIofMcPym9pVRXrEMfHuxmskl7LgJ_oPt7p4YehMUUm7AWJtfhTqu1A_8jsWK-3JZotc0D7NoA8XX-wJulv-M5T-3QsoP7PDJExCnQQMQPrhTlC9LnDX0Ze-7vIiZDYeyUym94Wi6GPl8cbLMDm1pnJ5J_Q-hk"/>
+</div>
+<div>
+<h3 class="font-body-lg font-semibold text-on-surface">Azure Heights</h3>
+<p class="font-body-sm text-on-surface-variant">124 Units â€¢ Downtown</p>
+<span class="inline-block mt-2 px-2 py-0.5 rounded-full bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">edit</button>
+</div>
+<!-- Building Card 2 -->
+<div class="p-md rounded-xl bg-surface border border-outline-variant flex items-start justify-between group">
+<div class="flex gap-md">
+<div class="w-14 h-14 bg-white rounded-lg border border-outline-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An eye-level shot of a sophisticated brick and steel mixed-use building during the daytime. The lighting is soft and natural, reflecting a professional and reliable real estate atmosphere. The scene is clean, minimal, and matches a corporate SaaS design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB17sdEccZXnGcGDDF3PvzlP7jG8U3nIyyvE5wrv4T-2_ZnmxIjeKQyp1JEMzDtw-pOv400D_TnVmNTwnAecRJnzRNEBuYrotxAfL4hw-Km6ibSMMVDSmpNuh4IAA_0Uqb26OESJyVWr5DbSV6xA4ZWTcHfX8yx97-SuwtEUClKYndIP56fGszFMkbyvzzMSs7rp8c2omlMsKjzAcjfZxZ2qVEoSHw01h4PfNppyQI1ANxYkTDrNrkIu_KKYEuCPSbNHWPIQbXvliE"/>
+</div>
+<div>
+<h3 class="font-body-lg font-semibold text-on-surface">Harbor View</h3>
+<p class="font-body-sm text-on-surface-variant">88 Units â€¢ Waterfront</p>
+<span class="inline-block mt-2 px-2 py-0.5 rounded-full bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">edit</button>
+</div>
+<!-- Building Card 3 -->
+<div class="p-md rounded-xl bg-surface border border-outline-variant flex items-start justify-between group">
+<div class="flex gap-md">
+<div class="w-14 h-14 bg-white rounded-lg border border-outline-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist 3D rendering of a modern office building with large windows. The lighting is early morning, soft blue tones dominating the sky and reflection. The visual style is professional, institutional, and fits perfectly within a modern water management platform UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzKDHOmKRHLV-ItX3Mh4XieDT8JfvXicWLnMw2itfQBOr7yYEXjtA9yjbWm5hrKOybmiw6bP-IIhWylfTo6RaBgGs1Ws9Vh86En2M7Tmn9_MiUkxMWSJY_uTemYM-tCfXbFBw1jAaObzD7-wzui8tL0cA7FNNRqg6oSewRrvUBBCKc6Cej32Zm0bmS53hIcPFk7POXZJfKSekvKEC4NnHvJs90duwEoOdI0b35WP1XvrJD1Vq_MmGMDs8MDMhbRdHZVLa1C7hLlCE"/>
+</div>
+<div>
+<h3 class="font-body-lg font-semibold text-on-surface">Sterling Plaza</h3>
+<p class="font-body-sm text-on-surface-variant">45 Units â€¢ Business Park</p>
+<span class="inline-block mt-2 px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-700 text-[10px] font-bold uppercase tracking-wider">Maintenance</span>
+</div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">edit</button>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-outline-variant flex justify-between items-center">
+<span class="font-body-sm text-on-surface-variant italic">Last updated: <span id="todayDate"></span></span>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-lg py-3 rounded-full font-label-md text-label-md transition-all active:scale-95 shadow-sm">
+                            Save Building List
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only - Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface border-t border-outline-variant shadow-lg md:hidden rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md-mobile">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-label-md text-label-md-mobile">Buildings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-md text-label-md-mobile">Summary</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-2xl p-2 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md-mobile">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.innerText.includes('Save') || this.innerText.includes('Update')) {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Updating...';
+                    this.disabled = true;
+                    setTimeout(() => {
+                        this.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Saved!';
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.disabled = false;
+                        }, 2000);
+                    }, 1000);
+                }
+            });
+        });
+
+        // Search Bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        if(searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('ring-2', 'ring-primary/30');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('ring-2', 'ring-primary/30');
+            });
+        }
+    </script>
+<script src="/app.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+ const d=new Date();
+ const e=id=>document.getElementById(id);
+ if(e('todayDate')) e('todayDate').textContent=d.toLocaleDateString('en-GB');
+ if(e('currentMonthYear')) e('currentMonthYear').textContent=d.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+ if(e('currentYear')) e('currentYear').textContent=d.getFullYear();
+ if(e('lastYear')) e('lastYear').textContent=d.getFullYear()-1;
+});
+</script>
+
+</body></html>
+
